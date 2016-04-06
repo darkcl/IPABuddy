@@ -10,6 +10,68 @@
 
 @implementation IPABuild
 
++ (void)exportPlistForIPA:(NSString *)ipaName
+               targetName:(NSString *)target
+                   inPath:(NSString *)currentDirectoryPath
+                   domain:(NSString *)domain
+                  success:(void(^)(void))success
+                 progress:(void(^)(NSString *logs))progress
+                  failure:(void(^)(NSException *err))failure{
+    dispatch_queue_t taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_async(taskQueue, ^{
+        bool isExportSucess = YES;
+        @try {
+            
+            NSString *path  = [NSString stringWithFormat:@"%@", [[NSBundle bundleForClass:[self class]] pathForResource:@"otabuddy" ofType:@"sh"]];
+            
+            NSTask *buildTask = [[NSTask alloc] init];
+            buildTask.launchPath = path;
+            buildTask.currentDirectoryPath = currentDirectoryPath;
+            NSArray *arg = @[@"plist",
+                             ipaName,
+                             [domain stringByAppendingPathComponent:ipaName],
+                             [NSString stringWithFormat:@"%@.plist",[ipaName stringByDeletingPathExtension]],
+                             target];
+            NSLog(@"%@",arg);
+            buildTask.arguments = arg;
+            
+            // Output Handling
+            NSPipe *outputPipe = [[NSPipe alloc] init];
+            buildTask.standardOutput = outputPipe;
+            
+            [[outputPipe fileHandleForReading] waitForDataInBackgroundAndNotify];
+            
+            [[NSNotificationCenter defaultCenter] addObserverForName:NSFileHandleDataAvailableNotification object:[outputPipe fileHandleForReading] queue:nil usingBlock:^(NSNotification *notification){
+                
+                NSData *output = [[outputPipe fileHandleForReading] availableData];
+                NSString *outStr = [[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding];
+                progress(outStr);
+                
+                [[outputPipe fileHandleForReading] waitForDataInBackgroundAndNotify];
+            }];
+            
+            
+            [buildTask launch];
+            
+            [buildTask waitUntilExit];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Problem Running Task: %@", [exception description]);
+            isExportSucess = NO;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                failure(exception);
+            });
+        }
+        @finally {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (isExportSucess) {
+                    success();
+                }
+            });
+        }
+    });
+}
+
 + (void)buildWithProjectPath:(NSString *)path
                       scheme:(NSString *)scheme
                       config:(NSString *)config
@@ -21,15 +83,15 @@
                      success:(void(^)(void))success
                     progress:(void(^)(NSString *logs))progress
                      failure:(void(^)(NSException *err))failure{
-//    (
-//     Facesss,
-//     Facesss App Developement,
-//     /Users/yeungyiuhung/Documents/Workspace/facesss-ios,
-//     /Users/yeungyiuhung/Documents/OTA Build/Facesss-Dev,
-//     201604061202,
-//     Facesss,
-//     Facesss.xcworkspace
-//     )
+    //    (
+    //     Facesss,
+    //     Facesss App Developement,
+    //     /Users/yeungyiuhung/Documents/Workspace/facesss-ios,
+    //     /Users/yeungyiuhung/Documents/OTA Build/Facesss-Dev,
+    //     201604061202,
+    //     Facesss,
+    //     Facesss.xcworkspace
+    //     )
     NSString *xcodeProjURL;
     if ([path rangeOfString:@"xcworkspace"].location != NSNotFound) {
         xcodeProjURL = path;
@@ -46,13 +108,10 @@
     
     NSArray *args = @[scheme, provision, path, exportPath, dateString, ipaName, xcodeProjURL, config];
     
-    __block bool isBuildSucess = NO;
-    
     dispatch_queue_t taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(taskQueue, ^{
+        bool isBuildSucess = YES;
         @try {
-            
-            
             NSTask *buildTask = [[NSTask alloc] init];
             [buildTask setLaunchPath:shellpath];
             buildTask.arguments  = args;
@@ -88,7 +147,19 @@
         @finally {
             if (isBuildSucess) {
                 dispatch_sync(dispatch_get_main_queue(), ^{
-                    success();
+                    [self exportPlistForIPA:[NSString stringWithFormat:@"%@-%@.ipa",ipaName, dateString]
+                                 targetName:ipaName
+                                     inPath:exportPath
+                                     domain:domain
+                                    success:^{
+                                        success();
+                                    }
+                                   progress:^(NSString *logs) {
+                                       progress(logs);
+                                   }
+                                    failure:^(NSException *err) {
+                                        failure(err);
+                                    }];
                 });
             }
         }

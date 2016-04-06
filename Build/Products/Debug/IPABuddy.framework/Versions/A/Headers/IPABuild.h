@@ -22,4 +22,11 @@
                     progress:(void(^)(NSString *logs))progress
                      failure:(void(^)(NSException *err))failure;
 
++ (void)exportPlistForIPA:(NSString *)ipaName
+               targetName:(NSString *)target
+                   inPath:(NSString *)currentDirectoryPath
+                   domain:(NSString *)domain
+                  success:(void(^)(void))success
+                 progress:(void(^)(NSString *logs))progress
+                  failure:(void(^)(NSException *err))failure;
 @end
