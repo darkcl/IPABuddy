@@ -45,7 +45,9 @@
                 
                 NSData *output = [[outputPipe fileHandleForReading] availableData];
                 NSString *outStr = [[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding];
-                progress(outStr);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    progress(outStr);
+                });
                 
                 [[outputPipe fileHandleForReading] waitForDataInBackgroundAndNotify];
             }];
@@ -126,7 +128,9 @@
                 
                 NSData *output = [[outputPipe fileHandleForReading] availableData];
                 NSString *outStr = [[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding];
-                progress(outStr);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    progress(outStr);
+                });
                 
                 [[outputPipe fileHandleForReading] waitForDataInBackgroundAndNotify];
             }];
