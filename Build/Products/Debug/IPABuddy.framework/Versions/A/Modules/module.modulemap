@@ -1,0 +1,6 @@
+framework module IPABuddy {
+  umbrella header "IPABuddy.h"
+
+  export *
+  module * { export * }
+}

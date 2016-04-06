@@ -1,0 +1,1 @@
+ const unsigned char IPABuddyTestsVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:IPABuddyTests  PROJECT:IPABuddy-1" "\n"; const double IPABuddyTestsVersionNumber __attribute__ ((used)) = (double)1.;

@@ -10,6 +10,10 @@
 		0E43F7031CB4BC6C00A21B4C /* IPABuddy.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E43F7021CB4BC6C00A21B4C /* IPABuddy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0E43F70A1CB4BC6C00A21B4C /* IPABuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E43F6FF1CB4BC6C00A21B4C /* IPABuddy.framework */; };
 		0E43F70F1CB4BC6C00A21B4C /* IPABuddyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E43F70E1CB4BC6C00A21B4C /* IPABuddyTests.m */; };
+		0E43F71A1CB4BCA100A21B4C /* otabuddy.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0E43F7191CB4BCA100A21B4C /* otabuddy.sh */; };
+		0E43F71C1CB4BCB400A21B4C /* BuildScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0E43F71B1CB4BCB400A21B4C /* BuildScript.sh */; };
+		0E43F7211CB4BD4300A21B4C /* IPABuild.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E43F71F1CB4BD4300A21B4C /* IPABuild.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E43F7221CB4BD4300A21B4C /* IPABuild.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E43F7201CB4BD4300A21B4C /* IPABuild.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +33,10 @@
 		0E43F7091CB4BC6C00A21B4C /* IPABuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IPABuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E43F70E1CB4BC6C00A21B4C /* IPABuddyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPABuddyTests.m; sourceTree = "<group>"; };
 		0E43F7101CB4BC6C00A21B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E43F7191CB4BCA100A21B4C /* otabuddy.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = otabuddy.sh; sourceTree = "<group>"; };
+		0E43F71B1CB4BCB400A21B4C /* BuildScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildScript.sh; sourceTree = "<group>"; };
+		0E43F71F1CB4BD4300A21B4C /* IPABuild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPABuild.h; sourceTree = "<group>"; };
+		0E43F7201CB4BD4300A21B4C /* IPABuild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPABuild.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +79,12 @@
 		0E43F7011CB4BC6C00A21B4C /* IPABuddy */ = {
 			isa = PBXGroup;
 			children = (
+				0E43F7191CB4BCA100A21B4C /* otabuddy.sh */,
+				0E43F71B1CB4BCB400A21B4C /* BuildScript.sh */,
 				0E43F7021CB4BC6C00A21B4C /* IPABuddy.h */,
 				0E43F7041CB4BC6C00A21B4C /* Info.plist */,
+				0E43F71F1CB4BD4300A21B4C /* IPABuild.h */,
+				0E43F7201CB4BD4300A21B4C /* IPABuild.m */,
 			);
 			path = IPABuddy;
 			sourceTree = "<group>";
@@ -93,6 +105,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E43F7211CB4BD4300A21B4C /* IPABuild.h in Headers */,
 				0E43F7031CB4BC6C00A21B4C /* IPABuddy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +189,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E43F71C1CB4BCB400A21B4C /* BuildScript.sh in Resources */,
+				0E43F71A1CB4BCA100A21B4C /* otabuddy.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E43F7221CB4BD4300A21B4C /* IPABuild.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

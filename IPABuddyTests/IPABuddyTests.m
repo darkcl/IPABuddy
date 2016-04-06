@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <IPABuddy/IPABuild.h>
 
 @interface IPABuddyTests : XCTestCase
 
