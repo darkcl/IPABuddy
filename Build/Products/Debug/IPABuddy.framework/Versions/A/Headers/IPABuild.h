@@ -10,4 +10,16 @@
 
 @interface IPABuild : NSObject
 
++ (void)buildWithProjectPath:(NSString *)path
+                      scheme:(NSString *)scheme
+                      config:(NSString *)config
+                      target:(NSString *)target
+                  exportPath:(NSString *)exportPath
+                      domain:(NSString *)domain
+                   provision:(NSString *)provision
+                     ipaName:(NSString *)ipaName
+                     success:(void(^)(void))success
+                    progress:(void(^)(NSString *logs))progress
+                     failure:(void(^)(NSException *err))failure;
+
 @end
