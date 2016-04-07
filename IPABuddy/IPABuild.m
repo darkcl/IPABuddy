@@ -151,7 +151,7 @@
         @finally {
             if (isBuildSucess) {
                 dispatch_sync(dispatch_get_main_queue(), ^{
-                    [self exportPlistForIPA:[NSString stringWithFormat:@"%@-%@.ipa",ipaName, dateString]
+                    [self exportPlistForIPA:[NSString stringWithFormat:@"%@.ipa",ipaName]
                                  targetName:ipaName
                                      inPath:exportPath
                                      domain:domain
