@@ -28,9 +28,9 @@
             buildTask.launchPath = path;
             buildTask.currentDirectoryPath = currentDirectoryPath;
             NSArray *arg = @[@"plist",
-                             ipaName,
-                             [domain stringByAppendingPathComponent:ipaName],
-                             [NSString stringWithFormat:@"%@.plist",[ipaName stringByDeletingPathExtension]],
+                             [NSString stringWithFormat:@"%@.ipa", ipaName],
+                             [domain stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.ipa", ipaName]],
+                             [NSString stringWithFormat:@"%@.plist",ipaName],
                              target];
             NSLog(@"%@",arg);
             buildTask.arguments = arg;
@@ -151,8 +151,8 @@
         @finally {
             if (isBuildSucess) {
                 dispatch_sync(dispatch_get_main_queue(), ^{
-                    [self exportPlistForIPA:[NSString stringWithFormat:@"%@.ipa",ipaName]
-                                 targetName:ipaName
+                    [self exportPlistForIPA:ipaName
+                                 targetName:target
                                      inPath:exportPath
                                      domain:domain
                                     success:^{
