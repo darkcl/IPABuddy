@@ -25,6 +25,31 @@
     [super tearDown];
 }
 
-
+- (void)testBuild{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Build"];
+    
+    [IPABuild buildWithProjectPath:@"/Users/yeungyiuhung/Documents/Workspace/facesss-ios/Facesss.xcworkspace"
+                            scheme:@"Facesss"
+                            config:@"Release"
+                            target:@"Facesss"
+                        exportPath:@"/Users/yeungyiuhung/Documents/OTA Build/Facesss-Dev"
+                            domain:@"https://host/"
+                         provision:@"Facesss App Developement"
+                           ipaName:@"Facesss-201604071151"
+                           success:^{
+                               [expectation fulfill];
+                           }
+                          progress:^(NSString *logs) {
+                              NSLog(@"%@", logs);
+                          }
+                           failure:^(NSException *err) {
+                               XCTFail(@"Should not fail %@", err.debugDescription);
+                               [expectation fulfill];
+                           }];
+    [self waitForExpectationsWithTimeout:INT_MAX
+                                 handler:^(NSError * _Nullable error) {
+                                     XCTAssertNil(error);
+                                 }];
+}
 
 @end

@@ -23,7 +23,7 @@ fi
 cd "$project_dir"
 
 xcodebuild -configuration "$configuration" -scheme "$appname" -destination generic/platform=iOS  -workspace "$workspace" clean archive -archivePath "$build_location/App-$NOW"
-xcodebuild -configuration "$configuration" -exportArchive -exportFormat ipa -archivePath "$build_location/App-$NOW.xcarchive" -exportPath "$build_location/$ipaname-$NOW.ipa" -exportProvisioningProfile "$provision"
+xcodebuild -configuration "$configuration" -exportArchive -exportFormat ipa -archivePath "$build_location/App-$NOW.xcarchive" -exportPath "$build_location/$ipaname.ipa" -exportProvisioningProfile "$provision"
 #echo "gym -s $appname -o $build_location -n $ipaname-$NOW -i $provision"
 
 #xcodebuild -target "$appname" OBJROOT="$build_location/obj.root" SYMROOT="$build_location/sym.root"
