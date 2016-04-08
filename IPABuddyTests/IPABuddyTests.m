@@ -25,6 +25,28 @@
     [super tearDown];
 }
 
+- (void)testListInfo{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"List Info"];
+    
+    [IPABuild buildInformationForProjectPath:@"/Users/yeungyiuhung/Documents/Workspace/facesss-ios/"
+                                     success:^(NSArray *targets, NSArray *configurations, NSArray *schemes) {
+                                         NSLog(@"Targets: %@", targets);
+                                         NSLog(@"Configuration: %@", configurations);
+                                         NSLog(@"Schemes: %@", schemes);
+                                         
+                                         [expectation fulfill];
+                                     }
+                                     failure:^(NSException *err) {
+                                         XCTFail(@"Should not fail %@", err.debugDescription);
+                                         [expectation fulfill];
+                                     }];
+    
+    [self waitForExpectationsWithTimeout:INT_MAX
+                                 handler:^(NSError * _Nullable error) {
+                                     XCTAssertNil(error);
+                                 }];
+}
+
 - (void)testBuild{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Build"];
     

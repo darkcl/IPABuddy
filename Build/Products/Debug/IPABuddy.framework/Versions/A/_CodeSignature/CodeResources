@@ -12,6 +12,10 @@
 		<data>
 		loNrylTavPkty6XPzBw+pgJi+s4=
 		</data>
+		<key>Resources/listInfo.sh</key>
+		<data>
+		YbFsx7dBURc596ds6eQzsZlCaUc=
+		</data>
 		<key>Resources/otabuddy.sh</key>
 		<data>
 		EFMNZXQ/c4pxEmgpSubZOvWh5zM=
@@ -34,11 +38,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			46JdH6796IQNyXwcGRUXRNr+rQ4=
+			Zeq1kBTeAimbDaIeiCecN9zU5hY=
 			</data>
 			<key>hash2</key>
 			<data>
-			naD1CmMMq+08NhjZZn2SayMKAQWjS6aHD4uwU2MboQc=
+			snzhr7AXykIKlnBeLvVG0Rp69tMi4RV03pmSbUu5EZo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -72,6 +76,17 @@
 			<key>hash2</key>
 			<data>
 			U3tbJCdJ23orl2DiRaytxbsp/51WJq494ofG3/r5e1I=
+			</data>
+		</dict>
+		<key>Resources/listInfo.sh</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YbFsx7dBURc596ds6eQzsZlCaUc=
+			</data>
+			<key>hash2</key>
+			<data>
+			segF8PFZvw4ySbR+WnKMd14JSFZgjzQO3r82JSmTQOQ=
 			</data>
 		</dict>
 		<key>Resources/otabuddy.sh</key>
