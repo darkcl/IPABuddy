@@ -24,7 +24,14 @@
             NSTask *buildTask = [[NSTask alloc] init];
             buildTask.launchPath = path;
             buildTask.currentDirectoryPath = projectPath;
-            
+            NSMutableDictionary *theEnvironment = [[NSProcessInfo processInfo].environment mutableCopy];
+            // Comment this line out to crash OpenPilot
+            if (theEnvironment[@"MallocNanoZone"])
+            {
+                [theEnvironment removeObjectForKey:@"MallocNanoZone"];
+            }
+
+            buildTask.environment = theEnvironment;
             // Output Handling
             NSPipe *outputPipe = [[NSPipe alloc] init];
             buildTask.standardOutput = outputPipe;
