@@ -4,12 +4,12 @@
   'roots': [
     {
       'type': 'directory',
-      'name': "/Users/darkcl/Documents/Workspace/IPABuddy/Build/Products/Debug/IPABuddy.framework/Headers",
+      'name': "/Users/darkcl/Documents/Workspace/IPABuddy/Build/Products/Release/IPABuddy.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "IPABuddy-Swift.h",
-          'external-contents': "/Users/darkcl/Documents/Workspace/IPABuddy/Build/Products/Debug/IPABuddy.framework/Versions/A/Headers/IPABuddy-Swift.h"
+          'external-contents': "/Users/darkcl/Documents/Workspace/IPABuddy/Build/Products/Release/IPABuddy.framework/Versions/A/Headers/IPABuddy-Swift.h"
         },
         {
           'type': 'file',
@@ -25,12 +25,12 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/darkcl/Documents/Workspace/IPABuddy/Build/Products/Debug/IPABuddy.framework/Modules",
+      'name': "/Users/darkcl/Documents/Workspace/IPABuddy/Build/Products/Release/IPABuddy.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/darkcl/Documents/Workspace/IPABuddy/Build/Intermediates/IPABuddy.build/Debug/IPABuddy.build/module.modulemap"
+          'external-contents': "/Users/darkcl/Documents/Workspace/IPABuddy/Build/Intermediates/IPABuddy.build/Release/IPABuddy.build/module.modulemap"
         }
       ]
     }
