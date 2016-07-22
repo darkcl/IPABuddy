@@ -28,7 +28,7 @@
 - (void)testListInfo{
     XCTestExpectation *expectation = [self expectationWithDescription:@"List Info"];
     
-    [IPABuild buildInformationForProjectPath:@"/Users/yeungyiuhung/Documents/Workspace/facesss-ios/"
+    [IPABuild buildInformationForProjectPath:@"/Users/darkcl/Documents/Workspace/friendzone-swift/"
                                      success:^(NSArray *targets, NSArray *configurations, NSArray *schemes) {
                                          NSLog(@"Targets: %@", targets);
                                          NSLog(@"Configuration: %@", configurations);
@@ -50,14 +50,14 @@
 - (void)testBuild{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Build"];
     
-    [IPABuild buildWithProjectPath:@"/Users/yeungyiuhung/Documents/Workspace/facesss-ios/Facesss.xcworkspace"
-                            scheme:@"Facesss"
+    [IPABuild buildWithProjectPath:@"/Users/darkcl/Documents/Workspace/friendzone-swift/FriendZone.xcworkspace"
+                            scheme:@"FriendZone"
                             config:@"Release"
-                            target:@"Facesss"
-                        exportPath:@"/Users/yeungyiuhung/Documents/OTA Build/Facesss-Dev"
+                            target:@"FriendZone"
+                        exportPath:@"/Users/darkcl/Documents/OTA Build"
                             domain:@"https://host/"
-                         provision:@"Facesss App Developement"
-                           ipaName:@"Facesss-201604071151"
+                         provision:@"FriendZone App Development"
+                           ipaName:@"test-201604071151"
                            success:^{
                                [expectation fulfill];
                            }
