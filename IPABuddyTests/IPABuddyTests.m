@@ -50,13 +50,13 @@
 - (void)testBuild{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Build"];
     
-    [IPABuild buildWithProjectPath:@"/Users/darkcl/Documents/Workspace/friendzone-swift/FriendZone.xcworkspace"
-                            scheme:@"FriendZone"
+    [IPABuild buildWithProjectPath:@"/Users/yeungyiuhung/Documents/Workspace/facesss-ios/Facesss.xcworkspace"
+                            scheme:@"Facesss"
                             config:@"Release"
-                            target:@"FriendZone"
-                        exportPath:@"/Users/darkcl/Documents/OTA Build"
+                            target:@"Facesss"
+                        exportPath:@"/Users/yeungyiuhung/Documents/OTA Build"
                             domain:@"https://host/"
-                         provision:@"FriendZone App Development"
+                         provision:@"Facesss App Developement"
                            ipaName:@"test-201604071151"
                            success:^{
                                [expectation fulfill];

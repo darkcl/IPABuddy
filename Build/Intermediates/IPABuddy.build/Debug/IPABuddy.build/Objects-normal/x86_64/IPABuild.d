@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/darkcl/Documents/Workspace/IPABuddy/IPABuddy/IPABuild.m \
-  /Users/darkcl/Documents/Workspace/IPABuddy/IPABuddy/IPABuild.h
+  /Users/yeungyiuhung/Documents/Workspace/IPABuddy/IPABuddy/IPABuild.m \
+  /Users/yeungyiuhung/Documents/Workspace/IPABuddy/IPABuddy/IPABuild.h
